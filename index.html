@@ -2424,9 +2424,10 @@ html.scrolled .nav{
     refresh();
   })();
 
-  // Card rails — wrap multi-card rails for scroll affordance (chevron + edge fade)
+  // Card rails — wrap multi-card rails for scroll affordance + auto-nudge on viewport entry
   (function(){
     var rails = Array.prototype.slice.call(document.querySelectorAll('.cards'));
+    var multiRails = [];
     rails.forEach(function(rail){
       if (rail.querySelectorAll('.card').length <= 1) return;
       var wrap = document.createElement('div');
@@ -2449,7 +2450,39 @@ html.scrolled .nav{
         }
       }, { passive: true });
       update();
+      multiRails.push(rail);
     });
+
+    // Add shortlist rail to nudge list as well
+    var sRail = document.querySelector('.shortlist-rail');
+    if (sRail) multiRails.push(sRail);
+
+    // Auto-nudge each rail when it enters the viewport (50%+) — once per page-load
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    function nudge(rail){
+      if (rail.dataset.nudged) return;
+      rail.dataset.nudged = '1';
+      rail.style.scrollBehavior = 'smooth';
+      setTimeout(function(){
+        rail.scrollTo({ left: 90, behavior: 'smooth' });
+        setTimeout(function(){
+          rail.scrollTo({ left: 0, behavior: 'smooth' });
+          setTimeout(function(){ rail.style.scrollBehavior = ''; }, 600);
+        }, 700);
+      }, 280);
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && e.intersectionRatio >= 0.5){
+          nudge(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    multiRails.forEach(function(r){ io.observe(r); });
   })();
 
   // Active chip — sync with currently-visible category in archive
