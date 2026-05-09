@@ -1,0 +1,2478 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>KAZYLYK · Архив нейминга · Выпуск 01</title>
+<meta name="description" content="Сорок имён для одной татарской традиции. Архив нейминга премиум-халяль казылыка." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;700&family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --white:#FFFFFF;
+  --paper:#F8F6F2;
+  --ink:#1A1815;
+  --mute:#6B655C;
+  --rule:rgba(26,24,21,0.12);
+  --rule-strong:rgba(26,24,21,0.22);
+  --wine:#6B1E1E;
+  --wine-deep:#4A1212;
+  --wine-light:#8C2424;
+  --pad-x:32px;
+  --maxw:1320px;
+  --gap-section:140px;
+  --nav-h:64px;
+  --safe-t:env(safe-area-inset-top, 0px);
+  --safe-b:env(safe-area-inset-bottom, 0px);
+  --safe-l:env(safe-area-inset-left, 0px);
+  --safe-r:env(safe-area-inset-right, 0px);
+}
+@media (min-width:1024px){
+  :root{ --pad-x:64px; --gap-section:180px; }
+}
+@media (max-width:768px){
+  :root{ --gap-section:88px; }
+}
+@media (max-width:480px){
+  :root{ --pad-x:20px; }
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--white);
+  color:var(--ink);
+  font-family:'Inter Tight', system-ui, -apple-system, sans-serif;
+  font-weight:400;
+  font-size:17px;
+  line-height:1.6;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:'kern' 1, 'liga' 1, 'calt' 1;
+  -webkit-text-size-adjust:100%;
+  opacity:0;
+  transition:opacity .55s ease-out;
+}
+body.is-loaded{ opacity:1; }
+@media (prefers-reduced-motion: reduce){
+  body{ opacity:1; transition:none; }
+}
+.italic, em, i{
+  font-feature-settings:'kern' 1, 'liga' 1, 'dlig' 1;
+}
+.note p,
+.spread-concept p,
+.closing p{
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  hanging-punctuation:first;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; }
+
+::selection{ background:var(--ink); color:var(--white); }
+
+/* Focus rings — keyboard navigation (M-62) */
+*:focus{ outline:none; }
+*:focus-visible{
+  outline:2px solid var(--wine);
+  outline-offset:3px;
+  border-radius:2px;
+}
+.cta:focus-visible{ outline-offset:4px; }
+.srail-card:focus-visible,
+.cat-chips a:focus-visible{ outline-offset:4px; outline-color:var(--ink); }
+
+/* ============================================================
+   TYPE PRIMITIVES
+   ============================================================ */
+.mono{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-weight:400;
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--mute);
+}
+.mono-strong{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-weight:500;
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+.italic{
+  font-family:'Fraunces', Georgia, serif;
+  font-style:italic;
+  font-weight:300;
+}
+.display{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  letter-spacing:-0.025em;
+  line-height:0.92;
+  color:var(--ink);
+}
+.label-rule{
+  display:inline-block;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--rule-strong);
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.shell{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding-left:max(var(--pad-x), var(--safe-l));
+  padding-right:max(var(--pad-x), var(--safe-r));
+}
+section[id], .cat[id], h3[id]{ scroll-margin-top:calc(var(--nav-h) + 12px); }
+@media (max-width:900px){
+  .cat[id]{ scroll-margin-top:calc(var(--nav-h) + 72px); }
+  #archive{ scroll-margin-top:calc(var(--nav-h) + 12px); }
+}
+.section{
+  padding:var(--gap-section) 0;
+}
+.hairline{ border-top:1px solid var(--rule); }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  background:rgba(248,246,242,0.9);
+  border-bottom:1px solid var(--rule);
+  padding-top:var(--safe-t);
+  transition:box-shadow .35s ease, background .35s ease;
+}
+html.scrolled .nav{
+  background:rgba(248,246,242,0.94);
+  box-shadow:0 1px 0 rgba(26,24,21,0.04), 0 12px 32px -16px rgba(26,24,21,0.18);
+}
+
+/* Scroll progress indicator — Apple-style micro-detail */
+.scroll-progress{
+  position:fixed;
+  top:var(--safe-t);
+  left:0; right:0;
+  height:2px;
+  z-index:60;
+  pointer-events:none;
+  background:transparent;
+}
+.scroll-progress > span{
+  display:block;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, transparent 0%, var(--wine) 8%, var(--wine-light) 100%);
+  box-shadow:0 0 8px rgba(107,30,30,0.35);
+  will-change:width;
+}
+.nav-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  height:var(--nav-h);
+}
+.nav-brand{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:400;
+  font-size:15px;
+  letter-spacing:0.02em;
+  white-space:nowrap;
+}
+.nav-brand .dot{ color:var(--mute); margin:0 8px; }
+.nav-links{
+  display:flex; gap:28px;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--mute);
+}
+.nav-links a{
+  display:inline-flex; align-items:center;
+  min-height:44px;
+  transition:color .25s ease;
+}
+.nav-links a:hover{ color:var(--ink); }
+@media (max-width:640px){
+  .nav-links{ gap:18px; font-size:10px; }
+  .nav-brand{ font-size:13px; }
+}
+@media (max-width:480px){
+  .nav-links a[href="#process"]{ display:none; }
+  .nav-links a[href="#contact"]{ display:none; }
+  .nav-links{ gap:18px; }
+  .nav-brand .dot{ margin:0 4px; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:100vh;
+  min-height:100dvh;
+  display:flex; flex-direction:column;
+}
+.hero-band{
+  height:60vh;
+  height:60dvh;
+  width:100%;
+  position:relative;
+  overflow:hidden;
+}
+.hero-band::after{
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 28% 14%, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.18) 100%);
+  pointer-events:none;
+  z-index:2;
+}
+@media (max-width:480px){
+  .hero-band{ height:48dvh; min-height:300px; }
+}
+.hero-band::after{
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.20) 100%);
+}
+.hero-block{
+  flex:1;
+  display:flex; flex-direction:column; justify-content:center;
+  position:relative;
+  padding:48px 0 32px;
+}
+.hero-meta{ display:flex; justify-content:space-between; gap:16px; margin-bottom:36px; }
+@media (max-width:480px){
+  .hero-meta{ flex-direction:column; align-items:flex-start; gap:10px; margin-bottom:28px; }
+}
+.hero-title{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  letter-spacing:-0.035em;
+  line-height:0.88;
+  font-size:clamp(72px, 18vw, 200px);
+  margin:0;
+}
+.hero-sub{
+  margin-top:28px;
+  font-family:'Fraunces', serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(18px, 2.4vw, 26px);
+  color:var(--ink);
+  letter-spacing:0.005em;
+}
+.hero-foot{
+  display:flex; justify-content:space-between;
+  margin-top:auto;
+  padding-top:32px;
+  border-top:1px solid var(--rule);
+}
+
+/* ============================================================
+   PHOTO BAND
+   ============================================================ */
+/* Bands as Apple-style pinned scenes */
+.band{
+  position:relative;
+  width:100%;
+  height:220dvh;
+}
+.band--tall{ height:240dvh; }
+.band--short{ height:auto; }
+
+.band-frame{
+  position:sticky;
+  top:0;
+  height:100vh;
+  height:100svh;
+  overflow:hidden;
+  isolation:isolate;
+  transform:translate3d(0,0,0);
+}
+.band--short .band-frame{ position:relative; height:auto; }
+
+/* ============================================================
+   PHOTO BACKGROUNDS — placeholder Picsum landscapes.
+   Замени URL'ы на свои фото лошадей и татарских пейзажей.
+   Места для замены: .band-bg + .band--deep/--hot/--bridge .band-bg,
+   .hero-band, .band-solo + .is-deep/.is-hot, .srail-card + --deep/--hot
+   ============================================================ */
+.band-bg{
+  position:absolute; inset:-4%;
+  z-index:0;
+  --bg-img:url('https://picsum.photos/id/1019/1600/1000');
+  --tint-a:rgba(40,12,12,0.55);
+  --tint-b:rgba(15,5,5,0.65);
+  background:
+    linear-gradient(180deg, var(--tint-a) 0%, var(--tint-b) 100%),
+    var(--bg-img) center/cover no-repeat #2a0a0a;
+  will-change:transform;
+}
+
+/* Photo variants per band */
+.band--deep .band-bg{
+  --bg-img:url('https://picsum.photos/id/1036/1600/1000');
+  --tint-a:rgba(20,6,6,0.55);
+  --tint-b:rgba(5,2,2,0.78);
+}
+.band--hot .band-bg{
+  --bg-img:url('https://picsum.photos/id/1018/1600/1000');
+  --tint-a:rgba(60,18,18,0.5);
+  --tint-b:rgba(28,10,10,0.6);
+}
+.band--bridge .band-bg{
+  --bg-img:url('https://picsum.photos/id/1019/1600/1000');
+  --tint-a:rgba(28,10,10,0.55);
+  --tint-b:rgba(8,3,3,0.7);
+}
+
+/* Band cells */
+.band-cell{
+  position:absolute; inset:0;
+  z-index:1;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  padding:24px;
+}
+.band--short .band-cell{
+  position:relative;
+  inset:auto;
+  height:60dvh;
+  min-height:380px;
+}
+
+/* Acts: pinned-scroll fade & rise */
+.band:not(.band--short) .band-cell{
+  opacity:0;
+  transform:translateY(28px) scale(0.985);
+  transition:opacity .85s cubic-bezier(0.16, 1, 0.3, 1),
+             transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change:opacity, transform;
+  pointer-events:none;
+}
+.band:not(.band--short) .band-cell.is-on{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+
+/* ============================================================
+   SHORTLIST PREVIEW RAIL — horizontal swipe carousel
+   ============================================================ */
+.shortlist-rail{
+  display:flex;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  gap:14px;
+  margin:48px calc(max(var(--pad-x), var(--safe-l)) * -1) 0;
+  padding-left:max(var(--pad-x), var(--safe-l));
+  padding-right:max(var(--pad-x), var(--safe-r));
+  scroll-padding-left:max(var(--pad-x), var(--safe-l));
+}
+.shortlist-rail::-webkit-scrollbar{ display:none; }
+.shortlist-rail::after{
+  content:'';
+  flex:0 0 max(8px, calc(var(--safe-r) + 8px));
+}
+.srail-card{
+  flex:0 0 78vw;
+  min-width:280px;
+  max-width:380px;
+  scroll-snap-align:start;
+  position:relative;
+  overflow:hidden;
+  height:240px;
+  padding:24px 24px 22px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  text-decoration:none;
+  isolation:isolate;
+  background:
+    linear-gradient(180deg, rgba(28,10,10,0.45) 0%, rgba(8,3,3,0.78) 100%),
+    url('https://picsum.photos/id/1051/1200/900') center/cover no-repeat #2a0a0a;
+  transition:transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.srail-card::before{
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 70% 50% at 28% 14%, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%);
+  pointer-events:none;
+}
+.srail-card--deep{
+  background:
+    linear-gradient(180deg, rgba(15,5,5,0.5) 0%, rgba(4,1,1,0.78) 100%),
+    url('https://picsum.photos/id/1036/1200/900') center/cover no-repeat #1a0606;
+}
+.srail-card--hot{
+  background:
+    linear-gradient(180deg, rgba(50,16,16,0.4) 0%, rgba(20,6,6,0.6) 100%),
+    url('https://picsum.photos/id/1018/1200/900') center/cover no-repeat #4a1212;
+}
+.srail-card:active{ transform:scale(0.985); }
+.srail-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  position:relative;
+  z-index:1;
+}
+.srail-bottom{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  position:relative;
+  z-index:1;
+}
+.srail-tag{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  opacity:0.85;
+}
+.srail-arrow{
+  font-family:'JetBrains Mono', monospace;
+  font-size:14px;
+  opacity:0.65;
+  line-height:1;
+}
+.srail-name{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  font-size:62px;
+  letter-spacing:-0.04em;
+  line-height:0.92;
+  margin:0;
+}
+.srail-territory{
+  font-family:'Fraunces', Georgia, serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:14px;
+  line-height:1.35;
+  opacity:0.78;
+}
+@media (min-width:1024px){
+  .shortlist-rail{ display:none; }
+}
+
+/* Photos on hero & featured-spread bands */
+.hero-band{
+  background:
+    linear-gradient(180deg, rgba(26,8,8,0.45) 0%, rgba(8,3,3,0.78) 100%),
+    url('https://picsum.photos/id/1015/1600/1000') center/cover no-repeat #2a0a0a;
+}
+.band-solo{
+  background:
+    linear-gradient(180deg, rgba(28,10,10,0.5) 0%, rgba(8,3,3,0.7) 100%),
+    url('https://picsum.photos/id/1051/1600/1000') center/cover no-repeat #2a0a0a;
+}
+.band-solo.is-deep{
+  background:
+    linear-gradient(180deg, rgba(15,5,5,0.55) 0%, rgba(4,1,1,0.78) 100%),
+    url('https://picsum.photos/id/1036/1600/1000') center/cover no-repeat #1a0606;
+}
+.band-solo.is-hot{
+  background:
+    linear-gradient(180deg, rgba(50,16,16,0.45) 0%, rgba(20,6,6,0.6) 100%),
+    url('https://picsum.photos/id/1018/1600/1000') center/cover no-repeat #4a1212;
+}
+.hero-band > *,
+.band-solo > *{ z-index:1; }
+/* Act dots — 3 dots, one filled, signals "act N of total" without competing with stat numbers */
+.band-dots{
+  position:absolute;
+  bottom:max(22px, var(--safe-b));
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 14px;
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:999px;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.16);
+  pointer-events:none;
+  transition:opacity .35s ease;
+}
+.band-dot{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.32);
+  transition:background .35s cubic-bezier(0.16,1,0.3,1), transform .35s cubic-bezier(0.16,1,0.3,1);
+}
+.band-dot.is-active{
+  background:rgba(255,255,255,0.95);
+  transform:scale(1.2);
+}
+.band--short .band-dots{ display:none; }
+
+/* Vignette darkening the bottom edge of pinned scenes */
+.band-frame::after{
+  content:'';
+  position:absolute; left:0; right:0; bottom:0;
+  height:30%;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.22) 100%);
+  pointer-events:none;
+  z-index:1;
+}
+.band-cell .stat,
+.band-cell .pull,
+.band-cell .solo-line{
+  position:relative; z-index:1;
+  color:#fff;
+  text-align:center;
+  padding:0 24px;
+}
+/* NYTimes-style editorial hairline above each act */
+.band-cell .stat::before,
+.band-cell .pull::before,
+.band-cell .solo-line::before{
+  content:'';
+  display:block;
+  width:32px;
+  height:1px;
+  margin:0 auto 28px;
+  background:rgba(255,255,255,0.42);
+}
+.band-cell .stat-num{
+  display:block;
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  font-size:clamp(116px, 36vw, 240px);
+  line-height:0.88;
+  letter-spacing:-0.05em;
+  margin-bottom:24px;
+}
+@media (max-height:540px){
+  .band-cell .stat-num{
+    font-size:clamp(72px, 28vh, 150px);
+    margin-bottom:16px;
+  }
+  .band-cell .stat::before,
+  .band-cell .pull::before,
+  .band-cell .solo-line::before{ margin-bottom:18px; }
+  .band-cell .pull-text{ font-size:clamp(16px, 4.2vh, 22px); }
+  .hero-title{ font-size:clamp(56px, 14vh, 132px); }
+  .hero-band{ height:42dvh; min-height:200px; }
+}
+.band-cell .stat-label,
+.band-cell .pull-tag{
+  display:block;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-weight:400;
+  font-size:11px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  opacity:0.86;
+}
+.band-cell .pull{ max-width:440px; }
+.band-cell .solo-line{ max-width:720px; padding:0 28px; }
+.band-cell .pull-tag{ margin-bottom:22px; }
+.band-cell .solo-line .pull-tag{ margin-bottom:26px; }
+.band-cell .pull-text{
+  display:block;
+  font-family:'Fraunces', Georgia, serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(20px, 2.2vw, 26px);
+  line-height:1.42;
+  letter-spacing:0.005em;
+}
+.band-cell .solo-line .pull-text{
+  font-size:clamp(22px, 2.8vw, 30px);
+  line-height:1.35;
+}
+@media (max-width:768px){
+  .band{ height:210dvh; }
+  .band--tall{ height:230dvh; }
+  .band--short{ height:auto; }
+  .band--short .band-cell{ height:54dvh; min-height:320px; }
+}
+
+/* Reduced motion: collapse pinned scenes to readable static stack */
+@media (prefers-reduced-motion:reduce){
+  .band:not(.band--short){ height:auto; }
+  .band-frame{
+    position:relative;
+    height:auto;
+  }
+  .band-bg{
+    position:relative;
+    inset:auto;
+    height:30dvh;
+    min-height:200px;
+  }
+  .band:not(.band--short) .band-cell{
+    position:relative;
+    inset:auto;
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
+    height:50dvh;
+    min-height:300px;
+  }
+  .band-frame::after{ display:none; }
+}
+
+/* Single-cell tall band (used inside featured spreads) */
+.band-solo{
+  width:100%; height:70vh; height:70dvh; min-height:420px;
+  position:relative;
+  overflow:hidden;
+}
+@media (max-width:768px){
+  .band-solo{ height:46dvh; min-height:320px; }
+}
+.band-solo::after{
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.22) 100%);
+}
+.band-solo .corner{
+  position:absolute; bottom:24px; left:var(--pad-x);
+  color:#fff;
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  z-index:1;
+}
+.band-solo .corner-r{
+  position:absolute; bottom:24px; right:var(--pad-x);
+  color:#fff;
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  z-index:1;
+}
+
+/* ============================================================
+   CURATOR'S NOTE
+   ============================================================ */
+.note{
+  max-width:720px; margin:0 auto;
+  text-align:left;
+}
+.note .label-rule{ margin-bottom:36px; }
+.note p{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:300;
+  font-size:19px;
+  line-height:1.65;
+  color:var(--ink);
+  margin:0 0 22px;
+}
+.note p .italic{ color:var(--ink); }
+
+/* ============================================================
+   FEATURED SPREAD
+   ============================================================ */
+.spread{
+  padding:120px 0;
+}
+.spread-grid{
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:80px;
+  align-items:start;
+}
+.spread-grid .rule-v{
+  width:1px; background:var(--rule); height:100%; min-height:320px;
+}
+.spread-name{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  letter-spacing:-0.025em;
+  line-height:0.86;
+  font-size:clamp(72px, 12vw, 180px);
+  margin:18px 0 32px;
+  color:var(--ink);
+}
+.spread-langs{
+  border-top:1px solid var(--rule);
+  margin-top:24px;
+}
+.spread-langs dl{
+  margin:0;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  column-gap:32px;
+  row-gap:0;
+}
+.spread-langs dt,
+.spread-langs dd{
+  margin:0;
+  padding:18px 0;
+  border-bottom:1px solid var(--rule);
+}
+.spread-langs dt{
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--mute);
+}
+.spread-langs dd{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:400;
+  font-size:22px;
+  letter-spacing:-0.005em;
+  color:var(--ink);
+}
+.spread-concept .label-rule{ margin-bottom:28px; }
+.spread-concept p{
+  margin:0 0 18px;
+  color:var(--mute);
+  font-size:17px;
+  line-height:1.65;
+}
+.spread-concept p.lead{
+  font-family:'Fraunces', serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:22px;
+  line-height:1.45;
+  color:var(--ink);
+  margin-bottom:24px;
+}
+@media (max-width:900px){
+  .spread-grid{ grid-template-columns:1fr; gap:48px; }
+  .spread-grid .rule-v{ display:none; }
+}
+@media (max-width:480px){
+  .spread{ padding:80px 0; }
+  .spread-name{
+    font-size:clamp(64px, 18vw, 110px);
+    line-height:0.95;
+    margin:14px 0 24px;
+  }
+  .spread-langs dd{ font-size:19px; }
+  .spread-concept p.lead{ font-size:19px; line-height:1.45; }
+}
+
+/* ============================================================
+   ARCHIVE
+   ============================================================ */
+.arch-head{
+  display:flex; flex-direction:column; gap:28px;
+  margin-bottom:80px;
+}
+.arch-title{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  letter-spacing:-0.02em;
+  font-size:clamp(40px, 6vw, 64px);
+  line-height:1;
+  margin:0;
+}
+.cat{
+  margin-bottom:72px;
+}
+.cat-head{
+  border-top:1px solid var(--rule-strong);
+  padding-top:28px;
+  margin-bottom:24px;
+}
+.cat-title{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:300;
+  font-size:clamp(28px, 6vw, 40px);
+  letter-spacing:-0.02em;
+  line-height:1.05;
+  color:var(--ink);
+  margin:0;
+}
+.cat-sub{
+  font-family:'Fraunces', Georgia, serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:17px;
+  line-height:1.45;
+  color:var(--mute);
+  margin:10px 0 0;
+  max-width:620px;
+}
+.cat-count{
+  font-style:normal;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--mute);
+  white-space:nowrap;
+}
+/* Archive cards — paper-block style horizontal rail (same visual as process steps) */
+.cards{
+  display:flex;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  gap:14px;
+  margin:0 calc(max(var(--pad-x), var(--safe-l)) * -1);
+  padding:4px max(var(--pad-x), var(--safe-r)) 4px max(var(--pad-x), var(--safe-l));
+  scroll-padding-left:max(var(--pad-x), var(--safe-l));
+}
+.cards::-webkit-scrollbar{ display:none; }
+.cards::after{
+  content:'';
+  flex:0 0 max(8px, calc(var(--safe-r) + 8px));
+}
+.card{
+  flex:0 0 76vw;
+  min-width:264px;
+  max-width:340px;
+  scroll-snap-align:start;
+  padding:24px 24px 26px;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  position:relative;
+  transition:transform .15s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color:transparent;
+}
+@media (hover:none){ .card:active{ transform:scale(0.99); } }
+.card:hover{ background:var(--paper); }
+@media (hover:none){
+  .card{ -webkit-tap-highlight-color:transparent; }
+  .card:active{ background:var(--paper); }
+  .nav-links a:active{ color:var(--ink); }
+  .cta:active{ background:var(--ink); color:var(--white); }
+}
+.card-idx{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11px;
+  letter-spacing:0.16em;
+  color:var(--mute);
+  display:flex; align-items:center; justify-content:space-between;
+  margin:0;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--rule);
+}
+.card-star{ color:var(--wine); font-size:12px; }
+.card-name{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:700;
+  font-size:24px;
+  letter-spacing:-0.005em;
+  line-height:1.1;
+  margin:0;
+  color:var(--ink);
+}
+.card-translit{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11px;
+  letter-spacing:0.14em;
+  color:var(--mute);
+  text-transform:none;
+  margin:-8px 0 0;
+}
+.card-desc{
+  font-family:'Fraunces', Georgia, serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:15px;
+  line-height:1.55;
+  color:var(--ink);
+  margin:0;
+  opacity:0.78;
+}
+
+/* ============================================================
+   PROCESS
+   ============================================================ */
+.process-head{ margin-bottom:72px; }
+.process-h{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  letter-spacing:-0.02em;
+  font-size:clamp(40px, 6vw, 64px);
+  line-height:1;
+  margin:18px 0 0;
+}
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:64px 56px;
+}
+@media (max-width:900px){ .steps{ grid-template-columns:repeat(2, 1fr); } }
+@media (max-width:600px){
+  .steps{
+    display:flex;
+    grid-template-columns:none;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    gap:14px;
+    margin:0 calc(max(var(--pad-x), var(--safe-l)) * -1);
+    padding-left:max(var(--pad-x), var(--safe-l));
+    padding-right:max(var(--pad-x), var(--safe-r));
+    scroll-padding-left:max(var(--pad-x), var(--safe-l));
+  }
+  .steps::-webkit-scrollbar{ display:none; }
+  .steps::after{
+    content:'';
+    flex:0 0 max(8px, calc(var(--safe-r) + 8px));
+  }
+  .step{
+    flex:0 0 76vw;
+    min-width:264px;
+    max-width:340px;
+    scroll-snap-align:start;
+    padding:32px 24px;
+    background:var(--paper);
+    border:1px solid var(--rule);
+  }
+  .step-num{ font-size:64px !important; margin-bottom:6px; }
+  .step-title{ padding-top:18px; }
+}
+.step{ display:flex; flex-direction:column; gap:14px; }
+.step-num{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  font-size:80px;
+  line-height:1;
+  letter-spacing:-0.04em;
+  color:var(--ink);
+}
+.step-title{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:500;
+  font-size:18px;
+  letter-spacing:-0.005em;
+  color:var(--ink);
+  border-top:1px solid var(--rule);
+  padding-top:14px;
+}
+.step-desc{
+  font-family:'Fraunces', serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:15px;
+  line-height:1.55;
+  color:var(--mute);
+  margin:0;
+}
+
+/* ============================================================
+   CLOSING
+   ============================================================ */
+.closing{
+  background:var(--paper);
+}
+.closing-inner{
+  max-width:780px; margin:0 auto;
+}
+.closing-h{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  letter-spacing:-0.025em;
+  font-size:clamp(48px, 7vw, 84px);
+  line-height:0.95;
+  margin:24px 0 16px;
+}
+.closing-italic{
+  font-family:'Fraunces', serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(20px, 2.4vw, 26px);
+  color:var(--ink);
+  margin-bottom:28px;
+}
+.closing p{
+  color:var(--mute);
+  font-size:17px;
+  line-height:1.65;
+  margin:0 0 28px;
+}
+.cta{
+  display:inline-flex;
+  align-items:center; justify-content:center;
+  min-height:48px;
+  padding:14px 24px;
+  border:1px solid var(--ink);
+  font-family:'JetBrains Mono', monospace;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--ink);
+  transition:background .25s ease, color .25s ease, transform .15s ease;
+}
+.cta:hover{ background:var(--ink); color:var(--white); }
+.cta:hover .cta-arrow,
+.cta:active .cta-arrow{ transform:translateX(4px); }
+.cta:active{ transform:scale(0.985); }
+.cta-arrow{ display:inline-block; transition:transform .35s cubic-bezier(0.16, 1, 0.3, 1); }
+@media (max-width:600px){
+  .cta{ display:flex; width:100%; padding:18px 24px; }
+}
+
+/* ============================================================
+   FLOATING UP BUTTON
+   ============================================================ */
+.up-top{
+  position:fixed;
+  right:max(18px, var(--safe-r));
+  bottom:max(18px, var(--safe-b));
+  width:42px; height:42px;
+  border-radius:999px;
+  background:rgba(26,24,21,0.86);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:var(--white);
+  border:none;
+  font-size:17px;
+  line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(8px) scale(0.94);
+  transition:opacity .35s ease, transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index:55;
+  box-shadow:0 4px 16px rgba(26,24,21,0.16), 0 1px 2px rgba(26,24,21,0.10);
+  -webkit-tap-highlight-color:transparent;
+}
+.up-top.is-on{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0) scale(1);
+}
+.up-top:active{ transform:translateY(0) scale(0.94); }
+@media (min-width:1024px){ .up-top{ display:none; } }
+
+/* ============================================================
+   CATEGORY CHIPS (mobile)
+   ============================================================ */
+.cat-chips{ display:none; }
+@media (max-width:900px){
+  .cat-chips{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    position:sticky;
+    top:calc(var(--nav-h) + var(--safe-t));
+    z-index:40;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:saturate(140%) blur(14px);
+    -webkit-backdrop-filter:saturate(140%) blur(14px);
+    border-bottom:1px solid var(--rule);
+    padding:12px max(var(--pad-x), var(--safe-r)) 12px max(var(--pad-x), var(--safe-l));
+    margin:0 calc(max(var(--pad-x), var(--safe-l)) * -1) 28px calc(max(var(--pad-x), var(--safe-l)) * -1);
+  }
+  .cat-chips::-webkit-scrollbar{ display:none; }
+  .cat-chips a{
+    flex:0 0 auto;
+    display:inline-flex;
+    align-items:center;
+    min-height:36px;
+    padding:6px 14px;
+    border:1px solid var(--rule-strong);
+    border-radius:999px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    white-space:nowrap;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .cat-chips a:active{ background:var(--ink); color:var(--white); border-color:var(--ink); }
+  .cat-chips a.is-current{
+    background:var(--ink);
+    color:var(--white);
+    border-color:var(--ink);
+  }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+/* ============================================================
+   FEEDBACK FORM
+   ============================================================ */
+.fb-form{
+  display:flex;
+  flex-direction:column;
+  gap:36px;
+  margin-top:48px;
+}
+.fb-fieldset{
+  border:0;
+  margin:0;
+  padding:0;
+  min-width:0;
+  min-inline-size:0;
+}
+.fb-form{ min-width:0; }
+.fb-legend-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+  border-top:1px solid var(--rule-strong);
+  padding-top:24px;
+  margin-bottom:18px;
+}
+.fb-legend{
+  display:block;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--mute);
+  border-top:1px solid var(--rule-strong);
+  padding-top:24px;
+  margin-bottom:18px;
+  width:100%;
+}
+.fb-legend-row .fb-legend{
+  border-top:0;
+  padding-top:0;
+  margin-bottom:0;
+  width:auto;
+}
+.fb-counter{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11px;
+  letter-spacing:0.14em;
+  color:var(--mute);
+  white-space:nowrap;
+}
+.fb-counter.is-full{ color:var(--wine); }
+
+/* Horizontal tile rail — all 40 names, scroll-snap */
+.fb-tiles{
+  display:flex;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  gap:10px;
+  margin:0 calc(max(var(--pad-x), var(--safe-l)) * -1);
+  padding-left:max(var(--pad-x), var(--safe-l));
+  padding-right:max(var(--pad-x), var(--safe-r));
+  scroll-padding-left:max(var(--pad-x), var(--safe-l));
+  padding-top:4px;
+  padding-bottom:4px;
+}
+.fb-tiles::-webkit-scrollbar{ display:none; }
+.fb-tiles::after{
+  content:'';
+  flex:0 0 max(8px, calc(var(--safe-r) + 8px));
+}
+.fb-tile{
+  flex:0 0 168px;
+  height:152px;
+  scroll-snap-align:start;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:16px 16px 18px;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:background .25s ease, border-color .25s ease, color .25s ease, transform .15s ease, opacity .25s ease;
+}
+.fb-tile input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+  width:0; height:0;
+}
+.fb-tile:active{ transform:scale(0.985); }
+.fb-tile:has(input:checked){
+  background:var(--ink);
+  border-color:var(--ink);
+  color:var(--white);
+}
+.fb-tile:has(input:disabled:not(:checked)){
+  opacity:0.32;
+  pointer-events:none;
+}
+.fb-tile-tag{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:10px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--mute);
+  line-height:1.3;
+}
+.fb-tile[data-tier="shortlist"] .fb-tile-tag{ color:var(--wine); }
+.fb-tile[data-tier="finalist"] .fb-tile-tag{ color:var(--ink); }
+.fb-tile:has(input:checked) .fb-tile-tag{ color:rgba(255,255,255,0.6); }
+.fb-tile-name{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:700;
+  font-size:21px;
+  letter-spacing:-0.005em;
+  line-height:1.05;
+  margin:8px 0 0;
+}
+.fb-tile-translit{
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:10px;
+  letter-spacing:0.14em;
+  color:var(--mute);
+  line-height:1.4;
+  word-break:break-word;
+}
+.fb-tile:has(input:checked) .fb-tile-translit{
+  color:rgba(255,255,255,0.55);
+}
+/* Selected indicator — small dot top-right */
+.fb-tile::before{
+  content:'';
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  border:1px solid var(--rule-strong);
+  background:transparent;
+  transition:all .25s ease;
+}
+.fb-tile:has(input:checked)::before{
+  background:var(--white);
+  border-color:var(--white);
+}
+.fb-tile:has(input:checked)::after{
+  content:'';
+  position:absolute;
+  top:18px;
+  right:18px;
+  width:5px;
+  height:9px;
+  border:solid var(--ink);
+  border-width:0 1.5px 1.5px 0;
+  transform:rotate(45deg);
+}
+.fb-tile-tag{ padding-right:24px; }
+
+.fb-textarea, .fb-input{
+  width:100%;
+  background:transparent;
+  border:0;
+  border-bottom:1px solid var(--rule-strong);
+  padding:14px 0;
+  font-family:'Inter Tight', sans-serif;
+  font-size:17px;
+  font-weight:400;
+  color:var(--ink);
+  outline:none;
+  transition:border-color .25s ease;
+  -webkit-appearance:none;
+  appearance:none;
+  border-radius:0;
+}
+.fb-textarea{
+  min-height:64px;
+  line-height:1.5;
+  resize:vertical;
+}
+.fb-textarea::placeholder, .fb-input::placeholder{
+  font-family:'Fraunces', Georgia, serif;
+  font-style:italic;
+  font-weight:300;
+  color:var(--mute);
+  opacity:0.85;
+}
+.fb-textarea:focus, .fb-input:focus{
+  border-color:var(--wine);
+}
+
+.fb-submit{ margin-top:8px; }
+.fb-form.is-sent .fb-submit{
+  background:var(--wine);
+  color:var(--white);
+  border-color:var(--wine);
+  pointer-events:none;
+}
+
+/* NYT-mast footer — bold display + legal row */
+.foot{
+  border-top:1px solid var(--rule-strong);
+  padding:64px 0 calc(40px + var(--safe-b));
+  background:var(--paper);
+}
+.foot-mast{
+  font-family:'Inter Tight', sans-serif;
+  font-weight:200;
+  font-size:clamp(72px, 18vw, 200px);
+  letter-spacing:-0.045em;
+  line-height:0.9;
+  color:var(--ink);
+  margin:0 0 36px;
+}
+.foot-mast .foot-dot{ color:var(--wine); }
+.foot-meta{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  align-items:baseline;
+  gap:20px;
+  border-top:1px solid var(--rule);
+  padding-top:24px;
+  font-family:'JetBrains Mono', ui-monospace, monospace;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--mute);
+}
+.foot-meta-mid{ text-align:center; }
+.foot-meta-end{ text-align:right; }
+@media (max-width:640px){
+  .foot{ padding:48px 0 calc(36px + var(--safe-b)); }
+  .foot-meta{
+    grid-template-columns:1fr;
+    gap:10px;
+    text-align:left;
+  }
+  .foot-meta-mid, .foot-meta-end{ text-align:left; }
+}
+
+/* ============================================================
+   FADE-UP
+   ============================================================ */
+.reveal{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change:opacity, transform;
+}
+.reveal.is-in{ opacity:1; transform:translateY(0); }
+/* Pre-paint first cell of each band so it's visible before JS engages */
+.band:not(.band--short) .band-cell:first-of-type{
+  opacity:1;
+  transform:none;
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  html{ scroll-behavior:auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header class="nav">
+  <div class="shell nav-inner">
+    <a href="#top" class="nav-brand">KAZYLYK <span class="dot">·</span> архив</a>
+    <nav class="nav-links" aria-label="навигация">
+      <a href="#featured">шорт-лист</a>
+      <a href="#archive">архив</a>
+      <a href="#process">процесс</a>
+      <a href="#contact">контакты</a>
+    </nav>
+  </div>
+</header>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+<main id="top">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-band" role="img" aria-label="Красная заливка — герой"></div>
+  <div class="hero-block">
+    <div class="shell">
+      <div class="hero-meta">
+        <span class="mono">[ Архив нейминга · 2026 ]</span>
+        <span class="mono">[ Конфиденциально ]</span>
+      </div>
+      <h1 class="hero-title">KAZYLYK<span style="color:var(--wine);">.</span></h1>
+      <p class="hero-sub italic">Сорок имён для одной татарской традиции.</p>
+      <div class="hero-foot">
+        <span class="mono">40 вариантов</span>
+        <span class="mono">7 финалистов</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CURATOR'S NOTE
+     ============================================================ -->
+<section class="section">
+  <div class="shell">
+    <div class="note reveal">
+      <span class="mono label-rule">[ Заметка куратора ]</span>
+      <p>
+        До формализации брифа я взял на себя смелость предварительно пройтись по территории
+        и собрать варианты. Это <span class="italic">не предложение к утверждению</span> —
+        рабочая карта: куда смотреть, от чего отталкиваться.
+      </p>
+      <p>
+        Этот документ — не презентация одного финалиста. Это <span class="italic">архив территории</span>:
+        шесть маршрутов, сорок имён, семь финалистов. Показываю целиком — отвергнутые гипотезы
+        рассказывают о бренде не меньше, чем выбранные.
+      </p>
+      <p>
+        Перед вами материал для обсуждения, а не для согласования. Каждое имя проверено на
+        чтение, на тюркскую морфологию, на резонанс с халяльной премиум-полкой. Шорт-лист — три
+        развёрнутых разворота. Остальные имена — компактно, по категориям.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BAND I · РАЗМАХ
+     ============================================================ -->
+<section class="band" aria-label="Цифры архива">
+  <div class="band-frame">
+    <div class="band-bg"></div>
+    <div class="band-dots" aria-hidden="true">
+      <span class="band-dot is-active"></span>
+      <span class="band-dot"></span>
+      <span class="band-dot"></span>
+    </div>
+    <div class="band-cell">
+      <div class="stat">
+        <span class="stat-num">40</span>
+        <span class="stat-label">имён в архиве</span>
+      </div>
+    </div>
+    <div class="band-cell">
+      <div class="stat">
+        <span class="stat-num">07</span>
+        <span class="stat-label">финалистов</span>
+      </div>
+    </div>
+    <div class="band-cell">
+      <div class="stat">
+        <span class="stat-num">03</span>
+        <span class="stat-label">в шорт-листе</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURED — INTRO + RAIL
+     ============================================================ -->
+<section class="section" id="featured">
+  <div class="shell">
+    <div class="reveal" style="max-width:760px;">
+      <span class="mono label-rule">[ Шорт-лист · 3 из 40 ]</span>
+      <h2 class="display" style="font-size:clamp(48px,7vw,84px); margin:24px 0 18px;">Шорт-лист.</h2>
+      <p class="italic" style="font-size:22px; color:var(--ink); margin:0;">
+        Три имени, которые я рекомендую взять в обсуждение — там и найдём лучшее.
+      </p>
+    </div>
+    <nav class="shortlist-rail" aria-label="Имена шорт-листа">
+      <a href="#idel-name" class="srail-card">
+        <div class="srail-top">
+          <span class="srail-tag">Шорт-лист · 01</span>
+          <span class="srail-arrow">↓</span>
+        </div>
+        <div class="srail-bottom">
+          <span class="srail-name">Идел</span>
+          <span class="srail-territory">Мастер-бренд · территория земли</span>
+        </div>
+      </a>
+      <a href="#kazykhan-name" class="srail-card srail-card--deep">
+        <div class="srail-top">
+          <span class="srail-tag">Шорт-лист · 02</span>
+          <span class="srail-arrow">↓</span>
+        </div>
+        <div class="srail-bottom">
+          <span class="srail-name">Казыхан</span>
+          <span class="srail-territory">Благородные · самообъясняющий</span>
+        </div>
+      </a>
+      <a href="#altynkaz-name" class="srail-card srail-card--hot">
+        <div class="srail-top">
+          <span class="srail-tag">Шорт-лист · 03</span>
+          <span class="srail-arrow">↓</span>
+        </div>
+        <div class="srail-bottom">
+          <span class="srail-name">Алтынказ</span>
+          <span class="srail-territory">Корень казы · премиум-сигнал</span>
+        </div>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURED 1 — IDEL
+     ============================================================ -->
+<section aria-labelledby="idel-name">
+  <div class="band-solo">
+    <span class="corner">[ Шорт-лист · 01 ]</span>
+    <span class="corner-r">[ Мастер-бренд ]</span>
+  </div>
+  <div class="spread reveal">
+    <div class="shell">
+      <div class="spread-grid">
+        <div>
+          <span class="mono">[ Мастер-бренд · Территория земли ]</span>
+          <h3 id="idel-name" class="spread-name">Идел.</h3>
+          <div class="spread-langs">
+            <dl>
+              <dt>Татарча</dt><dd>İdel</dd>
+              <dt>Латиница</dt><dd>Idel</dd>
+              <dt>Русский</dt><dd>Идел</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="rule-v" aria-hidden="true"></div>
+        <div class="spread-concept">
+          <span class="mono label-rule">[ Концепция ]</span>
+          <p class="lead">«Идел» — это Волга по-татарски. Гео-код всего региона: великая река, вдоль которой веками жили волжские булгары, татары, башкиры.</p>
+          <p>Имя реки старше любой государственности этих земель. Решение смещает фокус с коня на землю и реку — это масштабнее, тише, премиальнее.</p>
+          <p>Бренд получает мастер-уровень для всей линейки: казылык, тутырган, бүләк. Отдельные SKU становятся под-неймами под зонтом одного слова, которое не нужно объяснять татарину и которое легко принимает русский и английский слух.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURED 2 — KAZYKHAN
+     ============================================================ -->
+<section aria-labelledby="kazykhan-name">
+  <div class="band-solo is-deep">
+    <span class="corner">[ Шорт-лист · 02 ]</span>
+    <span class="corner-r">[ Благородные · десятка ]</span>
+  </div>
+  <div class="spread reveal">
+    <div class="shell">
+      <div class="spread-grid">
+        <div>
+          <span class="mono">[ Благородная территория · Самообъясняющий ]</span>
+          <h3 id="kazykhan-name" class="spread-name">Казыхан.</h3>
+          <div class="spread-langs">
+            <dl>
+              <dt>Татарча</dt><dd>Qazıxan</dd>
+              <dt>Латиница</dt><dd>Kazykhan</dd>
+              <dt>Русский</dt><dd>Казыхан</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="rule-v" aria-hidden="true"></div>
+        <div class="spread-concept">
+          <span class="mono label-rule">[ Концепция ]</span>
+          <p class="lead">Казы ханов. Самообъясняющий нейм: продукт и позиционирование вшиты в одно слово.</p>
+          <p>Хан — высший статус в тюркской иерархии. Соединение с категорийным корнем «казы» делает имя одновременно категорийным и премиальным. Ничего не нужно дорисовывать слоганом.</p>
+          <p>Полка работает на бренд автоматически: покупатель видит имя — и понимает и продукт, и его уровень. Это редкий случай, когда нейминг закрывает работу копирайтера.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURED 3 — ALTYNKAZ
+     ============================================================ -->
+<section aria-labelledby="altynkaz-name">
+  <div class="band-solo is-hot">
+    <span class="corner">[ Шорт-лист · 03 ]</span>
+    <span class="corner-r">[ Корень казы · десятка ]</span>
+  </div>
+  <div class="spread reveal">
+    <div class="shell">
+      <div class="spread-grid">
+        <div>
+          <span class="mono">[ Корень казы · Премиум-сигнал ]</span>
+          <h3 id="altynkaz-name" class="spread-name">Алтынказ.</h3>
+          <div class="spread-langs">
+            <dl>
+              <dt>Татарча</dt><dd>Altınqaz</dd>
+              <dt>Латиница</dt><dd>Altynkaz</dd>
+              <dt>Русский</dt><dd>Алтынказ</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="rule-v" aria-hidden="true"></div>
+        <div class="spread-concept">
+          <span class="mono label-rule">[ Концепция ]</span>
+          <p class="lead">«Золотое казы». Алтын — высший знак ценности в татарской культуре, от тамги до украшения.</p>
+          <p>Готовое имя для премиум-линейки: категория сразу читается с полки, позиционирование встроено в одно слово. Лаконично и по-делу — ничего лишнего, и в этом его сила.</p>
+          <p>Хорошо ляжет на упаковку и в фирменное письмо: один знак внимания сверху имени — и продукт получает золотую печать без буквального изображения.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BAND II · ФИЛЬТРЫ
+     ============================================================ -->
+<section class="band band--deep" aria-label="Фильтры отбора">
+  <div class="band-frame">
+    <div class="band-bg"></div>
+    <div class="band-dots" aria-hidden="true">
+      <span class="band-dot is-active"></span>
+      <span class="band-dot"></span>
+      <span class="band-dot"></span>
+    </div>
+    <div class="band-cell">
+      <div class="pull">
+        <span class="pull-tag">фильтр 01 · татарча</span>
+        <span class="pull-text">Морфология и чтение на родном языке — без них имя не идёт дальше.</span>
+      </div>
+    </div>
+    <div class="band-cell">
+      <div class="pull">
+        <span class="pull-tag">фильтр 02 · халяль</span>
+        <span class="pull-text">Резонанс с премиум-полкой читается с метра, а не доказывается слоганом.</span>
+      </div>
+    </div>
+    <div class="band-cell">
+      <div class="pull">
+        <span class="pull-tag">фильтр 03 · рост</span>
+        <span class="pull-text">Имя должно расти вместе с брендом — линейка, упаковка, разговор.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ARCHIVE
+     ============================================================ -->
+<section class="section" id="archive">
+  <div class="shell">
+
+    <div class="arch-head reveal">
+      <span class="mono label-rule">[ Архив · 39 записей ]</span>
+      <h2 class="arch-title">Остальная территория.</h2>
+      <p class="italic" style="color:var(--mute); max-width:640px; font-size:17px; margin:0;">
+        Шесть категорий мысли, развёрнутых параллельно. Звёздочка — имена, рекомендованные
+        к расширенной проверке.
+      </p>
+    </div>
+
+    <nav class="cat-chips reveal" aria-label="Категории архива">
+      <a href="#cat-a">A · бриф</a>
+      <a href="#cat-c">C · İdel</a>
+      <a href="#cat-d">D · эксперт</a>
+      <a href="#cat-e">E · благородные</a>
+      <a href="#cat-f">F · корень казы</a>
+      <a href="#cat-g">G · дикий креатив</a>
+    </nav>
+
+    <!-- A. Original brief -->
+    <div class="cat reveal" id="cat-a">
+      <header class="cat-head">
+        <h3 class="cat-title">Бриф</h3>
+        <p class="cat-sub">Имя, с которого начали работу.</p>
+      </header>
+      <div class="cards">
+        <article class="card">
+          <div class="card-idx"><span>A.001</span><span class="mono">бриф</span></div>
+          <h4 class="card-name">АЛТЫН АТ</h4>
+          <div class="card-translit">Altın At · Altyn At</div>
+          <p class="card-desc">«Золотой конь». Имя, с которого начали работу.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- C. İdel SKU -->
+    <div class="cat reveal" id="cat-c">
+      <header class="cat-head">
+        <h3 class="cat-title">İdel · линейка</h3>
+        <p class="cat-sub">Под-неймы для SKU внутри одной семьи продуктов.</p>
+      </header>
+      <div class="cards">
+        <article class="card">
+          <div class="card-idx"><span>C.001</span><span class="mono">хол. копчение</span></div>
+          <h4 class="card-name">КАКЛАГАН</h4>
+          <div class="card-translit">Qaqlağan</div>
+          <p class="card-desc">Холодное копчение. Под-нейм линейки İdel.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>C.002</span><span class="mono">90+ дней</span></div>
+          <h4 class="card-name">КАКЛАНГАН</h4>
+          <div class="card-translit">Qaqlanğan</div>
+          <p class="card-desc">Длительная выдержка 90+ дней. Премиум-сегмент линейки.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>C.003</span><span class="mono">начинка</span></div>
+          <h4 class="card-name">ТУТЫРГАН</h4>
+          <div class="card-translit">Tutırğan</div>
+          <p class="card-desc">Конская кишка с начинкой. Традиционная подача в новой упаковке.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>C.004</span><span class="mono">классика</span></div>
+          <h4 class="card-name">КЛАССИК</h4>
+          <div class="card-translit">Klassik</div>
+          <p class="card-desc">Базовый продукт линейки. Нейтральный якорь линейки.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>C.005</span><span class="mono">подарок</span></div>
+          <h4 class="card-name">БҮЛӘК</h4>
+          <div class="card-translit">Bülek</div>
+          <p class="card-desc">«Подарок». Подарочная упаковка, сезонные сборки, корпоративный канал.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- D. Expert -->
+    <div class="cat reveal" id="cat-d">
+      <header class="cat-head">
+        <h3 class="cat-title">Авторские неологизмы</h3>
+        <p class="cat-sub">Сложение тюркских корней — короткие имена с ясным внутренним переводом.</p>
+      </header>
+      <div class="cards">
+        <article class="card">
+          <div class="card-idx"><span>D.001</span><span class="card-star">★ финалист</span></div>
+          <h4 class="card-name">КАЗБАТЫР</h4>
+          <div class="card-translit">Qazbatır · Kazbatyr</div>
+          <p class="card-desc">Казы воина. Неологизм категория + батыр. Сильный, плотный, мужской.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>D.002</span><span class="mono">семья</span></div>
+          <h4 class="card-name">КАЗЫБАЙ</h4>
+          <div class="card-translit">Qazıbay · Kazybay</div>
+          <p class="card-desc">Казы богача. Семейная теплота, плотный коммерческий контур.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>D.003</span><span class="mono">чистый</span></div>
+          <h4 class="card-name">АТАКАЗ</h4>
+          <div class="card-translit">Ataqaz · Atakaz</div>
+          <p class="card-desc">Конское казы. Простой неологизм без декораций.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- E. Noble · ten -->
+    <div class="cat reveal" id="cat-e">
+      <header class="cat-head">
+        <h3 class="cat-title">Благородные слова</h3>
+        <p class="cat-sub">Премиум встроен в этимологию, не в декорацию.</p>
+      </header>
+      <div class="cards">
+        <article class="card">
+          <div class="card-idx"><span>E.002</span><span class="card-star">★ финалист</span></div>
+          <h4 class="card-name">МИРАС</h4>
+          <div class="card-translit">Mirás · Miras</div>
+          <p class="card-desc">Наследие. Премиум через тишину — не нужно обещаний, нужно происхождение.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>E.003</span><span class="card-star">★ финалист</span></div>
+          <h4 class="card-name">ТАМГА</h4>
+          <div class="card-translit">Tamğa · Tamga</div>
+          <p class="card-desc">Родовое клеймо. Бренд как знак мастера — заводское клеймо как символика.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>E.004</span><span class="mono">эпос</span></div>
+          <h4 class="card-name">АЛЫП</h4>
+          <div class="card-translit">Alıp · Alyp</div>
+          <p class="card-desc">Богатырь-великан из эпоса. Лаконичный мужской образ.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>E.005</span><span class="mono">место</span></div>
+          <h4 class="card-name">БИЛӘР</h4>
+          <div class="card-translit">Bilär · Bilyar</div>
+          <p class="card-desc">Древняя столица Волжской Булгарии. Гео-родословие бренда.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>E.006</span><span class="mono">составной</span></div>
+          <h4 class="card-name">БАЙТУЛПАР</h4>
+          <div class="card-translit">Baytulpar</div>
+          <p class="card-desc">«Конь богачей». Сцепление достатка и мифа.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>E.007</span><span class="mono">наследие</span></div>
+          <h4 class="card-name">АТАМИРАС</h4>
+          <div class="card-translit">Atamiras</div>
+          <p class="card-desc">«Отцовское наследие». Преемственность как обещание качества.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>E.008</span><span class="mono">белый воин</span></div>
+          <h4 class="card-name">АКБАТЫР</h4>
+          <div class="card-translit">Aqbatır · Akbatyr</div>
+          <p class="card-desc">«Белый богатырь». Цветовой код чистоты и силы.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>E.009</span><span class="card-star">★ шорт-лист</span></div>
+          <h4 class="card-name">КАЗЫХАН</h4>
+          <div class="card-translit">Qazıxan · Kazykhan</div>
+          <p class="card-desc">См. Шорт-лист · 02. Самообъясняющий премиум.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>E.010</span><span class="mono">поэтика</span></div>
+          <h4 class="card-name">АЛТЫН ТОЯК</h4>
+          <div class="card-translit">Altın Tuyaq · Altyn Toyak</div>
+          <p class="card-desc">«Золотое копыто». Поэтика без буквального золотого коня.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- F. Kazy-root · ten -->
+    <div class="cat reveal" id="cat-f">
+      <header class="cat-head">
+        <h3 class="cat-title">Корень «казы»</h3>
+        <p class="cat-sub">Категорийный корень становится первой половиной имени.</p>
+      </header>
+      <div class="cards">
+        <article class="card">
+          <div class="card-idx"><span>F.001</span><span class="card-star">★ финалист</span></div>
+          <h4 class="card-name">КАЗЫМИРАС</h4>
+          <div class="card-translit">Qazımirás · Kazymiras</div>
+          <p class="card-desc">Казы + наследие. Категория + позиционирование, без потери благородства.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>F.002</span><span class="card-star">★ шорт-лист</span></div>
+          <h4 class="card-name">АЛТЫНКАЗ</h4>
+          <div class="card-translit">Altınqaz · Altynkaz</div>
+          <p class="card-desc">См. Шорт-лист · 03. Золотое казы.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>F.003</span><span class="mono">эпос</span></div>
+          <h4 class="card-name">КАЗАЛЫП</h4>
+          <div class="card-translit">Qazalıp · Kazalyp</div>
+          <p class="card-desc">Казы богатыря-великана. Эпическая основа.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>F.004</span><span class="mono">знать</span></div>
+          <h4 class="card-name">КАЗЫМУРЗА</h4>
+          <div class="card-translit">Qazımurza · Kazymurza</div>
+          <p class="card-desc">Казы знатного рода. Мурза — наследный титул, отсылка к старой аристократии.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>F.005</span><span class="card-star">★ финалист</span></div>
+          <h4 class="card-name">ХАНКАЗ</h4>
+          <div class="card-translit">Xanqaz · Khankaz</div>
+          <p class="card-desc">Хан + казы. Перевёрнутый Казыхан с другой ритмикой.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>F.006</span><span class="mono">старец</span></div>
+          <h4 class="card-name">КАЗЫ-БАБАЙ</h4>
+          <div class="card-translit">Qazı-Babay · Kazy-Babay</div>
+          <p class="card-desc">«Казы деда». Тёплый домашний регистр для семейного канала.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>F.007</span><span class="mono">наследие</span></div>
+          <h4 class="card-name">КАЗЫБОЛГАР</h4>
+          <div class="card-translit">Qazıbolğar · Kazybolgar</div>
+          <p class="card-desc">Казы Волжской Булгарии. Глубокое гео-наследие.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>F.008</span><span class="mono">воин</span></div>
+          <h4 class="card-name">ИРКАЗ</h4>
+          <div class="card-translit">İrqaz · Irkaz</div>
+          <p class="card-desc">«Ир» (мужчина-воин) + каз. Короткое мужское имя.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>F.009</span><span class="mono">клеймо</span></div>
+          <h4 class="card-name">КАЗТАМГА</h4>
+          <div class="card-translit">Qaztamğa · Kaztamga</div>
+          <p class="card-desc">Казы с родовым клеймом. Бренд = клеймо мастера.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>F.010</span><span class="card-star">★ финалист</span></div>
+          <h4 class="card-name">КАЗАСЫЛ</h4>
+          <div class="card-translit">Qazasıl · Kazasyl</div>
+          <p class="card-desc">Казы + асыл (благородный, чистый). Лаконичная эстетика премиума.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- G. Wild creative -->
+    <div class="cat reveal" id="cat-g">
+      <header class="cat-head">
+        <h3 class="cat-title">Дикий креатив</h3>
+        <p class="cat-sub">Имена, которые рискуют — мифология, эпос, цифры, восклицания.</p>
+      </header>
+      <div class="cards">
+        <article class="card">
+          <div class="card-idx"><span>G.001</span><span class="mono">миф</span></div>
+          <h4 class="card-name">ЗИЛАНТ</h4>
+          <div class="card-translit">Zilant</div>
+          <p class="card-desc">Крылатый дракон, символ Казани. Городской миф как знак.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>G.002</span><span class="mono">герой эпоса</span></div>
+          <h4 class="card-name">ИДЕГӘЙ</h4>
+          <div class="card-translit">İdegäy · Idegey</div>
+          <p class="card-desc">Герой главного татарского эпоса. Литературная глубина для премиум-канала.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>G.003</span><span class="mono">эпич. конь</span></div>
+          <h4 class="card-name">АЛЫП-АТ</h4>
+          <div class="card-translit">Alıp-At · Alyp-At</div>
+          <p class="card-desc">Конь богатыря-великана. Прямой эпический образ.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>G.004</span><span class="mono">сивый конь</span></div>
+          <h4 class="card-name">БУЗ-АТ</h4>
+          <div class="card-translit">Buz-At</div>
+          <p class="card-desc">Серый конь из тюркских эпосов. Цветовой и литературный код.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>G.005</span><span class="mono">книга</span></div>
+          <h4 class="card-name">АТНАМЕ</h4>
+          <div class="card-translit">Atnamä · Atname</div>
+          <p class="card-desc">«Книга о коне». Книжный образ — нестандартный регистр для категории.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>G.006</span><span class="mono">цифра</span></div>
+          <h4 class="card-name">922</h4>
+          <div class="card-translit">CMXXII</div>
+          <p class="card-desc">Год принятия ислама в Волжской Булгарии. Цифровая отстройка от категории.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>G.007</span><span class="mono">код</span></div>
+          <h4 class="card-name">ТАМГА-Х</h4>
+          <div class="card-translit">Tamğa-X</div>
+          <p class="card-desc">Концептуальное родовое клеймо как код. Графический потенциал.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>G.008</span><span class="mono">повелит.</span></div>
+          <h4 class="card-name">АТЛАН!</h4>
+          <div class="card-translit">Atlan!</div>
+          <p class="card-desc">«В седло!» — повелительная форма. Энергия и движение в имени.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>G.009</span><span class="mono">динамика</span></div>
+          <h4 class="card-name">ЧАБЫШ</h4>
+          <div class="card-translit">Çabış · Chabysh</div>
+          <p class="card-desc">«Скачка». Динамика, ритм, темп.</p>
+        </article>
+        <article class="card">
+          <div class="card-idx"><span>G.010</span><span class="mono">призыв</span></div>
+          <h4 class="card-name">ӘЙДӘ</h4>
+          <div class="card-translit">Äydä · Eyde</div>
+          <p class="card-desc">«Давай!» — приглашение к действию. Самое разговорное имя архива.</p>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     BAND III · МЕТОД
+     ============================================================ -->
+<section class="band band--hot" aria-label="Принципы метода">
+  <div class="band-frame">
+    <div class="band-bg"></div>
+    <div class="band-dots" aria-hidden="true">
+      <span class="band-dot is-active"></span>
+      <span class="band-dot"></span>
+      <span class="band-dot"></span>
+    </div>
+    <div class="band-cell">
+      <div class="pull">
+        <span class="pull-tag">метод</span>
+        <span class="pull-text">Каждое имя проходит круг: предложить, оспорить, зафиксировать. Никаких одиночных решений.</span>
+      </div>
+    </div>
+    <div class="band-cell">
+      <div class="pull">
+        <span class="pull-tag">чтение</span>
+        <span class="pull-text">Татарский, русский, английский. На каждом языке — поиск нежелательных коннотаций.</span>
+      </div>
+    </div>
+    <div class="band-cell">
+      <div class="pull">
+        <span class="pull-tag">архив</span>
+        <span class="pull-text">Отвергнутые гипотезы рассказывают о бренде не меньше, чем выбранные.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS
+     ============================================================ -->
+<section class="section" id="process">
+  <div class="shell">
+    <div class="process-head reveal">
+      <span class="mono label-rule">[ Метод ]</span>
+      <h2 class="process-h">Шесть шагов к архиву.</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Распаковка брифа</div>
+        <p class="step-desc">Разбор задачи, контекста производства, регуляторики халяль и звучания категории.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Картирование территорий</div>
+        <p class="step-desc">Семь смысловых маршрутов: от категорийного «казы» до диких креативных гипотез.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Генерация и критика</div>
+        <p class="step-desc">Каждое имя проходит круг: предложить, оспорить, зафиксировать. Никаких одиночных решений.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Лингвистическая фильтрация</div>
+        <p class="step-desc">Проверка на татарскую, русскую и английскую морфологию, чтение и нежелательные коннотации.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">05</div>
+        <div class="step-title">Шорт-лист 9 финалистов</div>
+        <p class="step-desc">Имена с глубиной смысла и потенциалом роста. Звёздочки на карточках.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">06</div>
+        <div class="step-title">Документация архива</div>
+        <p class="step-desc">Финальный документ — этот. Открытый, для разговора, а не только для одобрения.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BAND IV · ПЕРЕХОД
+     ============================================================ -->
+<section class="band band--short band--bridge" aria-label="Что дальше">
+  <div class="band-frame">
+    <div class="band-bg"></div>
+    <div class="band-cell">
+      <div class="solo-line">
+        <span class="pull-tag">что дальше</span>
+        <span class="pull-text">Три варианта рядом раскрывают больше, чем один — разные ноты, разные смыслы. В финал — то, что найдём в разговоре.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLOSING
+     ============================================================ -->
+<section class="section closing" id="contact">
+  <div class="shell">
+    <div class="closing-inner reveal">
+      <span class="mono label-rule">[ Итог ]</span>
+      <h2 class="closing-h">Выберите три.</h2>
+      <p class="closing-italic">И обсудим — найдём лучшее.</p>
+      <p>
+        Дальше — разговор. Расскажите, что зацепило в каждом из трёх,
+        чего не хватает, куда хотите идти. Из обсуждения вырастает финальный выбор.
+      </p>
+      <p>
+        Три варианта вместе раскрывают больше, чем один: разные ноты, разные смыслы.
+        Когда они стоят рядом — становится понятно, какое имя ваше.
+      </p>
+    </div>
+
+    <form class="fb-form" id="fbForm" action="mailto:hello@example.com" method="post" enctype="text/plain" novalidate>
+      <fieldset class="fb-fieldset">
+        <div class="fb-legend-row">
+          <legend class="fb-legend">Выбор имён · до трёх</legend>
+          <span class="fb-counter" id="fbCounter">0 / 3</span>
+        </div>
+        <div class="fb-tiles" role="group" aria-label="Все 40 имён из архива">
+          <!-- Шорт-лист -->
+          <label class="fb-tile" data-tier="shortlist"><input type="checkbox" name="pick" value="Идел"><span class="fb-tile-tag">шорт-лист 01</span><span class="fb-tile-name">Идел</span><span class="fb-tile-translit">İdel · Idel</span></label>
+          <label class="fb-tile" data-tier="shortlist"><input type="checkbox" name="pick" value="Казыхан"><span class="fb-tile-tag">шорт-лист 02</span><span class="fb-tile-name">Казыхан</span><span class="fb-tile-translit">Qazıxan · Kazykhan</span></label>
+          <label class="fb-tile" data-tier="shortlist"><input type="checkbox" name="pick" value="Алтынказ"><span class="fb-tile-tag">шорт-лист 03</span><span class="fb-tile-name">Алтынказ</span><span class="fb-tile-translit">Altınqaz · Altynkaz</span></label>
+          <!-- Финалисты ★ -->
+          <label class="fb-tile" data-tier="finalist"><input type="checkbox" name="pick" value="Казбатыр"><span class="fb-tile-tag">★ финалист</span><span class="fb-tile-name">Казбатыр</span><span class="fb-tile-translit">Qazbatır · Kazbatyr</span></label>
+          <label class="fb-tile" data-tier="finalist"><input type="checkbox" name="pick" value="Мирас"><span class="fb-tile-tag">★ финалист</span><span class="fb-tile-name">Мирас</span><span class="fb-tile-translit">Mirás · Miras</span></label>
+          <label class="fb-tile" data-tier="finalist"><input type="checkbox" name="pick" value="Тамга"><span class="fb-tile-tag">★ финалист</span><span class="fb-tile-name">Тамга</span><span class="fb-tile-translit">Tamğa · Tamga</span></label>
+          <label class="fb-tile" data-tier="finalist"><input type="checkbox" name="pick" value="Казымирас"><span class="fb-tile-tag">★ финалист</span><span class="fb-tile-name">Казымирас</span><span class="fb-tile-translit">Qazımirás · Kazymiras</span></label>
+          <label class="fb-tile" data-tier="finalist"><input type="checkbox" name="pick" value="Ханказ"><span class="fb-tile-tag">★ финалист</span><span class="fb-tile-name">Ханказ</span><span class="fb-tile-translit">Xanqaz · Khankaz</span></label>
+          <label class="fb-tile" data-tier="finalist"><input type="checkbox" name="pick" value="Казасыл"><span class="fb-tile-tag">★ финалист</span><span class="fb-tile-name">Казасыл</span><span class="fb-tile-translit">Qazasıl · Kazasyl</span></label>
+          <!-- A · Бриф -->
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Алтын Ат"><span class="fb-tile-tag">A · бриф</span><span class="fb-tile-name">Алтын Ат</span><span class="fb-tile-translit">Altın At · Altyn At</span></label>
+          <!-- C · İdel SKU -->
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Каклаган"><span class="fb-tile-tag">C · İdel SKU</span><span class="fb-tile-name">Каклаган</span><span class="fb-tile-translit">Qaqlağan</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Какланган"><span class="fb-tile-tag">C · İdel SKU</span><span class="fb-tile-name">Какланган</span><span class="fb-tile-translit">Qaqlanğan</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Тутырган"><span class="fb-tile-tag">C · İdel SKU</span><span class="fb-tile-name">Тутырган</span><span class="fb-tile-translit">Tutırğan</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Классик"><span class="fb-tile-tag">C · İdel SKU</span><span class="fb-tile-name">Классик</span><span class="fb-tile-translit">Klassik</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Бүләк"><span class="fb-tile-tag">C · İdel SKU</span><span class="fb-tile-name">Бүләк</span><span class="fb-tile-translit">Bülek</span></label>
+          <!-- D · Эксперт -->
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Казыбай"><span class="fb-tile-tag">D · эксперт</span><span class="fb-tile-name">Казыбай</span><span class="fb-tile-translit">Qazıbay · Kazybay</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Атаказ"><span class="fb-tile-tag">D · эксперт</span><span class="fb-tile-name">Атаказ</span><span class="fb-tile-translit">Ataqaz · Atakaz</span></label>
+          <!-- E · Благородные -->
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Алып"><span class="fb-tile-tag">E · благородные</span><span class="fb-tile-name">Алып</span><span class="fb-tile-translit">Alıp · Alyp</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Биләр"><span class="fb-tile-tag">E · благородные</span><span class="fb-tile-name">Биләр</span><span class="fb-tile-translit">Bilär · Bilyar</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Байтулпар"><span class="fb-tile-tag">E · благородные</span><span class="fb-tile-name">Байтулпар</span><span class="fb-tile-translit">Baytulpar</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Атамирас"><span class="fb-tile-tag">E · благородные</span><span class="fb-tile-name">Атамирас</span><span class="fb-tile-translit">Atamiras</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Акбатыр"><span class="fb-tile-tag">E · благородные</span><span class="fb-tile-name">Акбатыр</span><span class="fb-tile-translit">Aqbatır · Akbatyr</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Алтын Тояк"><span class="fb-tile-tag">E · благородные</span><span class="fb-tile-name">Алтын Тояк</span><span class="fb-tile-translit">Altın Tuyaq · Altyn Toyak</span></label>
+          <!-- F · Корень казы -->
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Казалып"><span class="fb-tile-tag">F · корень казы</span><span class="fb-tile-name">Казалып</span><span class="fb-tile-translit">Qazalıp · Kazalyp</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Казымурза"><span class="fb-tile-tag">F · корень казы</span><span class="fb-tile-name">Казымурза</span><span class="fb-tile-translit">Qazımurza · Kazymurza</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Казы-Бабай"><span class="fb-tile-tag">F · корень казы</span><span class="fb-tile-name">Казы-Бабай</span><span class="fb-tile-translit">Qazı-Babay · Kazy-Babay</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Казыболгар"><span class="fb-tile-tag">F · корень казы</span><span class="fb-tile-name">Казыболгар</span><span class="fb-tile-translit">Qazıbolğar · Kazybolgar</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Ирказ"><span class="fb-tile-tag">F · корень казы</span><span class="fb-tile-name">Ирказ</span><span class="fb-tile-translit">İrqaz · Irkaz</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Казтамга"><span class="fb-tile-tag">F · корень казы</span><span class="fb-tile-name">Казтамга</span><span class="fb-tile-translit">Qaztamğa · Kaztamga</span></label>
+          <!-- G · Дикий креатив -->
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Зилант"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">Зилант</span><span class="fb-tile-translit">Zilant</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Идегәй"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">Идегәй</span><span class="fb-tile-translit">İdegäy · Idegey</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Алып-Ат"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">Алып-Ат</span><span class="fb-tile-translit">Alıp-At · Alyp-At</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Буз-Ат"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">Буз-Ат</span><span class="fb-tile-translit">Buz-At</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Атнаме"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">Атнаме</span><span class="fb-tile-translit">Atnamä · Atname</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="922"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">922</span><span class="fb-tile-translit">CMXXII</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Тамга-Х"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">Тамга-Х</span><span class="fb-tile-translit">Tamğa-X</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Атлан!"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">Атлан!</span><span class="fb-tile-translit">Atlan!</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Чабыш"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">Чабыш</span><span class="fb-tile-translit">Çabış · Chabysh</span></label>
+          <label class="fb-tile"><input type="checkbox" name="pick" value="Әйдә"><span class="fb-tile-tag">G · дикий креатив</span><span class="fb-tile-name">Әйдә</span><span class="fb-tile-translit">Äydä · Eyde</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="fb-fieldset">
+        <legend class="fb-legend">Что зацепило</legend>
+        <textarea class="fb-textarea" name="liked" rows="3" placeholder="звучание, ассоциации, поведение на полке…"></textarea>
+      </fieldset>
+
+      <fieldset class="fb-fieldset">
+        <legend class="fb-legend">Что не сработало</legend>
+        <textarea class="fb-textarea" name="disliked" rows="3" placeholder="смущает, не читается, рискованно…"></textarea>
+      </fieldset>
+
+      <fieldset class="fb-fieldset">
+        <legend class="fb-legend">Что исправить или добавить</legend>
+        <textarea class="fb-textarea" name="suggestions" rows="3" placeholder="другая территория, новые корни, иная интонация…"></textarea>
+      </fieldset>
+
+      <a id="fbSubmit" class="cta fb-submit" href="https://t.me/semenovfolders" target="_blank" rel="noopener">
+        Написать в Telegram&nbsp;<span class="cta-arrow">→</span>
+      </a>
+    </form>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FLOATING UP BUTTON (mobile/tablet)
+     ============================================================ -->
+<button id="upTop" class="up-top" type="button" aria-label="Наверх">↑</button>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="foot">
+  <div class="shell">
+    <h2 class="foot-mast">KAZYLYK<span class="foot-dot">.</span></h2>
+    <div class="foot-meta">
+      <span class="foot-meta-start">Конфиденциально</span>
+      <span class="foot-meta-mid">© 2026</span>
+      <span class="foot-meta-end">Eugene Semenov</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Page-load fade (M-44)
+  requestAnimationFrame(function(){
+    document.body.classList.add('is-loaded');
+  });
+
+  // Feedback form — max 3 picks + live Telegram link
+  (function(){
+    var form = document.getElementById('fbForm');
+    var submitLink = document.getElementById('fbSubmit');
+    if (!form || !submitLink) return;
+    var picks = Array.prototype.slice.call(form.querySelectorAll('input[name="pick"]'));
+    var counter = document.getElementById('fbCounter');
+    var TG_BASE = submitLink.getAttribute('href') || 'https://t.me/semenovfolders';
+    var MAX = 3;
+
+    function buildBody(){
+      var fd = new FormData(form);
+      var pickList = fd.getAll('pick');
+      var liked = (fd.get('liked') || '').trim();
+      var disliked = (fd.get('disliked') || '').trim();
+      var sugg = (fd.get('suggestions') || '').trim();
+
+      var lines = ['Привет!', '', 'Kazylyk · обратная связь', ''];
+      lines.push('Выбранные имена (' + pickList.length + '):');
+      if (pickList.length){
+        pickList.forEach(function(n){ lines.push('— ' + n); });
+      } else {
+        lines.push('— ничего не выбрано');
+      }
+      lines.push('', 'Что зацепило:', liked || '—');
+      lines.push('', 'Что не сработало:', disliked || '—');
+      lines.push('', 'Что исправить или добавить:', sugg || '—');
+      return lines.join('\n');
+    }
+
+    function refresh(){
+      var checked = picks.filter(function(p){ return p.checked; });
+      var n = checked.length;
+      if (counter){
+        counter.textContent = n + ' / ' + MAX;
+        counter.classList.toggle('is-full', n === MAX);
+      }
+      picks.forEach(function(p){
+        if (!p.checked) p.disabled = (n >= MAX);
+      });
+      submitLink.href = TG_BASE + '?text=' + encodeURIComponent(buildBody());
+    }
+
+    form.addEventListener('change', refresh);
+    form.addEventListener('input', refresh);
+    refresh();
+  })();
+
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || !els.length){
+      els.forEach(function(el){ el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // lazy decoration: convert later background-images to lazy-load via IO
+  (function(){
+    if (!('IntersectionObserver' in window)) return;
+    var bg = document.querySelectorAll('.band-cell, .band-solo, .hero-band');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          // already inline, just unobserve
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '200px' });
+    bg.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Apple-style pinned scenes — scroll-driven act crossfade
+  (function(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var scenes = Array.prototype.slice.call(document.querySelectorAll('.band:not(.band--short)'));
+    if (!scenes.length) return;
+
+    var vh = window.innerHeight;
+    var data = scenes.map(function(scene){
+      var cells = Array.prototype.slice.call(scene.querySelectorAll('.band-cell'));
+      cells.forEach(function(c){
+        c.style.transition = 'none';
+        c.style.willChange = 'opacity, transform';
+      });
+      var dots = Array.prototype.slice.call(scene.querySelectorAll('.band-dot'));
+      return {
+        el: scene,
+        cells: cells,
+        n: cells.length,
+        h: scene.offsetHeight,
+        prev: new Array(cells.length).fill(-1),
+        dots: dots,
+        dotPrev: 0
+      };
+    });
+
+    function smoothstep(t){
+      if (t <= 0) return 0;
+      if (t >= 1) return 1;
+      return t * t * (3 - 2 * t);
+    }
+    function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
+
+    function update(){
+      for (var k = 0; k < data.length; k++){
+        var s = data[k];
+        var rect = s.el.getBoundingClientRect();
+        if (rect.bottom < -vh * 0.1 || rect.top > vh * 1.1) continue;
+
+        var travel = s.h - vh;
+        if (travel <= 0) continue;
+
+        var p = clamp(-rect.top / travel, 0, 1);
+        // Update act dots — pagination dots, no number conflict
+        if (s.dots && s.dots.length){
+          var actIdx = Math.min(s.n - 1, Math.max(0, Math.floor(p * s.n)));
+          if (actIdx !== s.dotPrev){
+            s.dotPrev = actIdx;
+            for (var d = 0; d < s.dots.length; d++){
+              s.dots[d].classList.toggle('is-active', d === actIdx);
+            }
+          }
+        }
+
+        var seg = 1 / s.n;
+        var fadeHalf = 0.05; // half of crossfade width in p-units
+
+        for (var i = 0; i < s.n; i++){
+          var left = i * seg;
+          var right = (i + 1) * seg;
+          var center = (i + 0.5) * seg;
+          var delta = p - center;
+          var leftFade = (i === 0) ? 0 : fadeHalf;
+          var rightFade = (i === s.n - 1) ? 0 : fadeHalf;
+
+          var alpha;
+          if (p < left - leftFade) alpha = 0;
+          else if (leftFade > 0 && p < left + leftFade) {
+            alpha = smoothstep((p - (left - leftFade)) / (2 * leftFade));
+          } else if (p < right - rightFade) alpha = 1;
+          else if (rightFade > 0 && p < right + rightFade) {
+            alpha = smoothstep(1 - (p - (right - rightFade)) / (2 * rightFade));
+          } else if (i === s.n - 1 && p >= right) alpha = 1; // last cell holds past end
+          else alpha = 0;
+
+          // skip DOM write if value barely changed
+          if (Math.abs(alpha - s.prev[i]) < 0.005) continue;
+          s.prev[i] = alpha;
+
+          // Directional drift: act rises into place, exits upward
+          var dir = delta < 0 ? 1 : -1;
+          var ty = (1 - alpha) * 64 * dir;
+          var sc = 0.96 + alpha * 0.04;
+
+          var cell = s.cells[i];
+          cell.style.opacity = alpha.toFixed(3);
+          cell.style.transform = 'translate3d(0,' + ty.toFixed(2) + 'px,0) scale(' + sc.toFixed(4) + ')';
+        }
+      }
+    }
+
+    function refresh(){
+      vh = window.innerHeight;
+      for (var k = 0; k < data.length; k++){ data[k].h = data[k].el.offsetHeight; }
+      update();
+    }
+
+    var ticking = false;
+    function onScroll(){
+      if (!ticking){
+        requestAnimationFrame(function(){ update(); ticking = false; });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', refresh);
+    refresh();
+  })();
+
+  // Active chip — sync with currently-visible category in archive
+  (function(){
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.cat-chips a'));
+    if (!chips.length || !('IntersectionObserver' in window)) return;
+    var cats = chips.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    if (cats.length !== chips.length) return;
+
+    var current = -1;
+    function setCurrent(idx){
+      if (idx === current) return;
+      current = idx;
+      chips.forEach(function(c, i){ c.classList.toggle('is-current', i === idx); });
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      // Find topmost visible cat
+      var visible = entries
+        .filter(function(e){ return e.isIntersecting; })
+        .map(function(e){ return { idx: cats.indexOf(e.target), top: e.boundingClientRect.top }; })
+        .sort(function(a, b){ return a.top - b.top; });
+      if (visible.length){
+        setCurrent(visible[0].idx);
+      }
+    }, { rootMargin: '-30% 0px -50% 0px', threshold: 0 });
+
+    cats.forEach(function(c){ io.observe(c); });
+  })();
+
+  // floating up-button + scroll-progress + nav scroll-shadow
+  (function(){
+    var btn = document.getElementById('upTop');
+    var bar = document.getElementById('scrollProgress');
+    var html = document.documentElement;
+    var on = false;
+    var scrolled = false;
+    var threshold = 600;
+
+    function update(){
+      var y = window.scrollY;
+      var max = Math.max(1, html.scrollHeight - window.innerHeight);
+      var p = Math.min(1, Math.max(0, y / max));
+
+      if (bar) bar.style.width = (p * 100).toFixed(2) + '%';
+
+      var nowScrolled = y > 50;
+      if (nowScrolled !== scrolled){
+        scrolled = nowScrolled;
+        html.classList.toggle('scrolled', scrolled);
+      }
+
+      if (btn){
+        var should = y > threshold;
+        if (should !== on){
+          on = should;
+          btn.classList.toggle('is-on', on);
+        }
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+      if (!ticking){
+        window.requestAnimationFrame(function(){ update(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    if (btn){
+      btn.addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    update();
+  })();
+</script>
+
+</body>
+</html>
