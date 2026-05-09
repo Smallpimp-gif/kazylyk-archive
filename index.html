@@ -835,32 +835,6 @@ html.scrolled .nav{
   white-space:nowrap;
 }
 /* Archive cards — paper-block style horizontal rail (same visual as process steps) */
-.cards-wrap{ position:relative; }
-.cards-wrap.has-more::after{
-  content:'';
-  position:absolute;
-  top:0; right:0; bottom:0;
-  width:48px;
-  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, var(--white) 100%);
-  pointer-events:none;
-  transition:opacity .25s ease;
-  z-index:1;
-}
-.cards-wrap.is-end::after{ opacity:0; }
-.cards-chevron{
-  position:absolute;
-  top:-30px; right:0;
-  font-family:'JetBrains Mono', ui-monospace, monospace;
-  font-size:11px;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  color:var(--mute);
-  pointer-events:none;
-  display:none;
-}
-.cards-wrap.has-more .cards-chevron{ display:inline-block; }
-.cards-wrap.is-end .cards-chevron{ opacity:0.35; }
-
 .cards{
   display:flex;
   overflow-x:auto;
@@ -2424,42 +2398,17 @@ html.scrolled .nav{
     refresh();
   })();
 
-  // Card rails — wrap multi-card rails for scroll affordance + auto-nudge on viewport entry
+  // Auto-nudge horizontal rails on viewport entry — motion = "I'm swipeable"
   (function(){
-    var rails = Array.prototype.slice.call(document.querySelectorAll('.cards'));
-    var multiRails = [];
-    rails.forEach(function(rail){
-      if (rail.querySelectorAll('.card').length <= 1) return;
-      var wrap = document.createElement('div');
-      wrap.className = 'cards-wrap has-more';
-      var chev = document.createElement('span');
-      chev.className = 'cards-chevron';
-      chev.textContent = '↔ листать';
-      rail.parentNode.insertBefore(wrap, rail);
-      wrap.appendChild(chev);
-      wrap.appendChild(rail);
-      function update(){
-        var atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4;
-        wrap.classList.toggle('is-end', atEnd);
-      }
-      var ticking = false;
-      rail.addEventListener('scroll', function(){
-        if (!ticking){
-          ticking = true;
-          requestAnimationFrame(function(){ update(); ticking = false; });
-        }
-      }, { passive: true });
-      update();
-      multiRails.push(rail);
-    });
-
-    // Add shortlist rail to nudge list as well
-    var sRail = document.querySelector('.shortlist-rail');
-    if (sRail) multiRails.push(sRail);
-
-    // Auto-nudge each rail when it enters the viewport (50%+) — once per page-load
     if (!('IntersectionObserver' in window)) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var rails = [];
+    document.querySelectorAll('.cards').forEach(function(r){
+      if (r.querySelectorAll('.card').length > 1) rails.push(r);
+    });
+    var sRail = document.querySelector('.shortlist-rail');
+    if (sRail) rails.push(sRail);
 
     function nudge(rail){
       if (rail.dataset.nudged) return;
@@ -2482,7 +2431,7 @@ html.scrolled .nav{
         }
       });
     }, { threshold: 0.5 });
-    multiRails.forEach(function(r){ io.observe(r); });
+    rails.forEach(function(r){ io.observe(r); });
   })();
 
   // Active chip — sync with currently-visible category in archive
