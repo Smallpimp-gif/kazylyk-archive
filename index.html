@@ -834,6 +834,28 @@ html.scrolled .nav{
   color:var(--mute);
   white-space:nowrap;
 }
+/* Pagination dots for horizontal rails (archive cards + shortlist) */
+.rail-dots{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin:22px 0 0;
+  padding:0;
+  flex-wrap:wrap;
+}
+.rail-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--rule-strong);
+  transition:background .35s cubic-bezier(0.16, 1, 0.3, 1), transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rail-dot.is-active{
+  background:var(--ink);
+  transform:scale(1.25);
+}
+
 /* Archive cards — paper-block style horizontal rail (same visual as process steps) */
 .cards{
   display:flex;
@@ -2398,31 +2420,78 @@ html.scrolled .nav{
     refresh();
   })();
 
-  // Auto-nudge horizontal rails on viewport entry — motion = "I'm swipeable"
+  // Horizontal rails — pagination dots + auto-nudge on viewport entry
   (function(){
-    if (!('IntersectionObserver' in window)) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // Collect multi-item rails (archive .cards with >1 card + shortlist rail)
     var rails = [];
     document.querySelectorAll('.cards').forEach(function(r){
-      if (r.querySelectorAll('.card').length > 1) rails.push(r);
+      if (r.querySelectorAll('.card').length > 1) rails.push({el: r, items: r.querySelectorAll('.card')});
     });
     var sRail = document.querySelector('.shortlist-rail');
-    if (sRail) rails.push(sRail);
+    if (sRail){
+      rails.push({el: sRail, items: sRail.querySelectorAll('.srail-card')});
+    }
 
-    function nudge(rail){
-      if (rail.dataset.nudged) return;
-      rail.dataset.nudged = '1';
-      rail.style.scrollBehavior = 'smooth';
+    rails.forEach(function(rail){
+      var n = rail.items.length;
+      if (n <= 1) return;
+
+      // Build dots
+      var dots = document.createElement('div');
+      dots.className = 'rail-dots';
+      dots.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++){
+        var d = document.createElement('span');
+        d.className = 'rail-dot' + (i === 0 ? ' is-active' : '');
+        dots.appendChild(d);
+      }
+      rail.el.parentNode.insertBefore(dots, rail.el.nextSibling);
+      rail.dotEls = dots.querySelectorAll('.rail-dot');
+      rail.activeIdx = 0;
+
+      // Update active dot based on which card is most centered in rail viewport
+      function update(){
+        var center = rail.el.scrollLeft + rail.el.clientWidth / 2;
+        var bestIdx = 0;
+        var bestDist = Infinity;
+        for (var i = 0; i < n; i++){
+          var c = rail.items[i];
+          var cCenter = c.offsetLeft + c.offsetWidth / 2;
+          var dist = Math.abs(cCenter - center);
+          if (dist < bestDist){ bestDist = dist; bestIdx = i; }
+        }
+        if (bestIdx !== rail.activeIdx){
+          rail.dotEls[rail.activeIdx].classList.remove('is-active');
+          rail.dotEls[bestIdx].classList.add('is-active');
+          rail.activeIdx = bestIdx;
+        }
+      }
+      var ticking = false;
+      rail.el.addEventListener('scroll', function(){
+        if (!ticking){
+          ticking = true;
+          requestAnimationFrame(function(){ update(); ticking = false; });
+        }
+      }, { passive: true });
+      update();
+    });
+
+    // Auto-nudge each rail when it enters viewport (motion cue)
+    if (!('IntersectionObserver' in window) || reduced) return;
+    function nudge(railEl){
+      if (railEl.dataset.nudged) return;
+      railEl.dataset.nudged = '1';
+      railEl.style.scrollBehavior = 'smooth';
       setTimeout(function(){
-        rail.scrollTo({ left: 90, behavior: 'smooth' });
+        railEl.scrollTo({ left: 90, behavior: 'smooth' });
         setTimeout(function(){
-          rail.scrollTo({ left: 0, behavior: 'smooth' });
-          setTimeout(function(){ rail.style.scrollBehavior = ''; }, 600);
+          railEl.scrollTo({ left: 0, behavior: 'smooth' });
+          setTimeout(function(){ railEl.style.scrollBehavior = ''; }, 600);
         }, 700);
       }, 280);
     }
-
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if (e.isIntersecting && e.intersectionRatio >= 0.5){
@@ -2431,7 +2500,7 @@ html.scrolled .nav{
         }
       });
     }, { threshold: 0.5 });
-    rails.forEach(function(r){ io.observe(r); });
+    rails.forEach(function(r){ io.observe(r.el); });
   })();
 
   // Active chip — sync with currently-visible category in archive
