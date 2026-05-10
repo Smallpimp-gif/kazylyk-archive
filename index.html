@@ -1364,6 +1364,76 @@ html.scrolled .nav{
   pointer-events:none;
 }
 
+/* Hint shown above submit when form has content */
+.fb-hint{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:14px 0 0;
+  padding:12px 14px;
+  border:1px dashed var(--rule-strong);
+  border-radius:0;
+  background:rgba(0,0,0,0.018);
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--mute);
+  transition:opacity .35s, border-color .35s, color .35s, background .35s;
+}
+.fb-hint-dot{
+  width:6px; height:6px; border-radius:50%;
+  background:var(--rule-strong);
+  flex-shrink:0;
+  transition:background .35s;
+}
+.fb-hint.is-ready{
+  border-color:var(--ink);
+  color:var(--ink);
+  background:rgba(0,0,0,0.028);
+}
+.fb-hint.is-ready .fb-hint-dot{
+  background:var(--wine);
+  animation:fbPulse 1.6s ease-in-out infinite;
+}
+.fb-hint.is-copied{
+  border-color:var(--wine);
+  color:var(--wine);
+  background:rgba(122,28,38,0.04);
+}
+.fb-hint.is-copied .fb-hint-dot{ background:var(--wine); animation:none; }
+@keyframes fbPulse{
+  0%,100%{ opacity:1; transform:scale(1); }
+  50%{ opacity:0.5; transform:scale(0.7); }
+}
+
+/* Toast — "скопировано" */
+.fb-toast{
+  position:fixed;
+  left:50%;
+  bottom:calc(28px + var(--safe-b));
+  transform:translate(-50%, 24px);
+  z-index:2000;
+  padding:14px 20px;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:'JetBrains Mono', monospace;
+  font-size:12px;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  border-radius:999px;
+  box-shadow:0 14px 38px rgba(0,0,0,0.28);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .32s, transform .32s;
+  max-width:calc(100vw - 32px);
+  text-align:center;
+}
+.fb-toast.is-visible{
+  opacity:1;
+  transform:translate(-50%, 0);
+}
+
 /* NYT-mast footer — bold display + legal row */
 .foot{
   border-top:1px solid var(--rule-strong);
@@ -2416,10 +2486,17 @@ html.scrolled .nav{
         <textarea class="fb-textarea" name="suggestions" rows="3" placeholder="другая территория, новые корни, иная интонация…"></textarea>
       </fieldset>
 
+      <p id="fbHint" class="fb-hint" aria-live="polite">
+        <span class="fb-hint-dot" aria-hidden="true"></span>
+        <span id="fbHintText">Заполните форму — текст подгрузится автоматически</span>
+      </p>
+
       <a id="fbSubmit" class="cta fb-submit" href="https://t.me/semenovfolders" target="_blank" rel="noopener">
         Написать в Telegram&nbsp;<span class="cta-arrow">→</span>
       </a>
     </form>
+
+    <div id="fbToast" class="fb-toast" role="status" aria-live="polite">Сообщение скопировано — вставьте в чат</div>
 
   </div>
 </section>
@@ -2451,15 +2528,19 @@ html.scrolled .nav{
     document.body.classList.add('is-loaded');
   });
 
-  // Feedback form — max 3 picks + live Telegram link
+  // Feedback form — max 3 picks + live Telegram link + clipboard prefill
   (function(){
     var form = document.getElementById('fbForm');
     var submitLink = document.getElementById('fbSubmit');
     if (!form || !submitLink) return;
     var picks = Array.prototype.slice.call(form.querySelectorAll('input[name="pick"]'));
     var counter = document.getElementById('fbCounter');
+    var hint = document.getElementById('fbHint');
+    var hintText = document.getElementById('fbHintText');
+    var toast = document.getElementById('fbToast');
     var TG_BASE = submitLink.getAttribute('href') || 'https://t.me/semenovfolders';
     var MAX = 3;
+    var toastTimer = null;
 
     function buildBody(){
       var fd = new FormData(form);
@@ -2481,6 +2562,15 @@ html.scrolled .nav{
       return lines.join('\n');
     }
 
+    function hasContent(){
+      var fd = new FormData(form);
+      var pickList = fd.getAll('pick');
+      var liked = (fd.get('liked') || '').trim();
+      var disliked = (fd.get('disliked') || '').trim();
+      var sugg = (fd.get('suggestions') || '').trim();
+      return pickList.length > 0 || liked || disliked || sugg;
+    }
+
     function refresh(){
       var checked = picks.filter(function(p){ return p.checked; });
       var n = checked.length;
@@ -2492,7 +2582,85 @@ html.scrolled .nav{
         if (!p.checked) p.disabled = (n >= MAX);
       });
       submitLink.href = TG_BASE + '?text=' + encodeURIComponent(buildBody());
+
+      if (hint && hintText){
+        hint.classList.remove('is-copied');
+        if (hasContent()){
+          hint.classList.add('is-ready');
+          // Russian plural: 1 → one, 2-4 → few, 5+ → many
+          function plural(n, one, few, many){
+            var mod10 = n % 10, mod100 = n % 100;
+            if (mod100 >= 11 && mod100 <= 14) return many;
+            if (mod10 === 1) return one;
+            if (mod10 >= 2 && mod10 <= 4) return few;
+            return many;
+          }
+          var parts = [];
+          if (n) parts.push(n + ' ' + plural(n, 'имя', 'имени', 'имён'));
+          var fd2 = new FormData(form);
+          var notes = ['liked','disliked','suggestions'].filter(function(k){
+            return (fd2.get(k) || '').trim();
+          }).length;
+          if (notes) parts.push(notes + ' ' + plural(notes, 'комментарий', 'комментария', 'комментариев'));
+          hintText.textContent = 'Готово к отправке · ' + parts.join(' + ');
+        } else {
+          hint.classList.remove('is-ready');
+          hintText.textContent = 'Заполните форму — текст подгрузится автоматически';
+        }
+      }
     }
+
+    function showToast(msg){
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('is-visible');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function(){
+        toast.classList.remove('is-visible');
+      }, 2800);
+    }
+
+    function copyToClipboard(text){
+      // Modern API
+      if (navigator.clipboard && window.isSecureContext){
+        return navigator.clipboard.writeText(text);
+      }
+      // Fallback for HTTP / older browsers
+      return new Promise(function(resolve, reject){
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.top = '0'; ta.style.left = '0';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.focus(); ta.select();
+          var ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          ok ? resolve() : reject(new Error('execCommand failed'));
+        } catch(e){ reject(e); }
+      });
+    }
+
+    submitLink.addEventListener('click', function(e){
+      // Build the latest body and ensure href is up to date
+      var body = buildBody();
+      submitLink.href = TG_BASE + '?text=' + encodeURIComponent(body);
+
+      // Copy to clipboard so the user can paste in one tap inside Telegram
+      // (Telegram ignores ?text= for personal user chats — only works for bots)
+      copyToClipboard(body).then(function(){
+        if (hint && hintText){
+          hint.classList.add('is-copied');
+          hintText.textContent = 'Текст скопирован — вставьте в чат (⌘V)';
+        }
+        showToast('Сообщение скопировано — вставьте в чат');
+      }).catch(function(){
+        showToast('Не удалось скопировать — пишите сами');
+      });
+      // Don't prevent default — let the link open Telegram in a new tab
+    });
 
     form.addEventListener('change', refresh);
     form.addEventListener('input', refresh);
